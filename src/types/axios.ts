@@ -1,3 +1,3 @@
 export type ServiceParams = {
-    [key: string]: unknown
+  [key: string]: unknown
 }

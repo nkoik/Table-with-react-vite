@@ -1,11 +1,11 @@
 import BodyWrapper from 'components/style/BodyWrapper'
-import TableView from 'pages/TableView'
+import TablePage from '@/pages/TablePage'
 
 function App() {
   return (
     <BodyWrapper>
-      <div className='mb-4'>React Table</div>
-      <TableView />
+      <div className="mb-4">React Table</div>
+      <TablePage />
     </BodyWrapper>
   )
 }
