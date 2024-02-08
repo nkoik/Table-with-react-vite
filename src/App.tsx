@@ -5,7 +5,9 @@ function App() {
   return (
     <BodyWrapper>
       <div className="mb-4">React Table</div>
-      <TablePage />
+      <div className="p-8 border radius-2">
+        <TablePage />
+      </div>
     </BodyWrapper>
   )
 }
