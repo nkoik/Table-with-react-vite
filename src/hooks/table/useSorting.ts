@@ -4,7 +4,7 @@ import { KeyOfTableList } from '@/types/table'
 import { useState, useMemo, useEffect, useRef } from 'react'
 
 export const useSortedList = <T>(
-  items: T[], 
+  items: T[],
   initial = {},
   sortFn = sortList
 ) => {
@@ -21,14 +21,16 @@ export const useSortedList = <T>(
   })
 
   const onSort = (newSortKey: KeyOfTableList<T>) => {
-    const isAscending = sort.sortKey === newSortKey && sort.sortDir === Sorting.Ascending
+    const isAscending =
+      sort.sortKey === newSortKey && sort.sortDir === Sorting.Ascending
     setSort({
       sortKey: newSortKey,
       sortDir: isAscending ? Sorting.Descending : Sorting.Ascending
     })
   }
   const sortedList = useMemo(
-    () => sortFnRef.current(items, sort.sortKey as KeyOfTableList<T>, sort.sortDir),
+    () =>
+      sortFnRef.current(items, sort.sortKey as KeyOfTableList<T>, sort.sortDir),
     [items, sort]
   )
 

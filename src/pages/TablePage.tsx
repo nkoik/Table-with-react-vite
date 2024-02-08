@@ -6,7 +6,10 @@ import { Sorting } from '@/enums/table'
 
 function TablePage() {
   const { data } = useGetRequest<Data[]>(Endpoint.Sample)
-  const { list, sorting: { onSort } } = useTable(data, {
+  const {
+    list,
+    sorting: { onSort }
+  } = useTable(data, {
     sortKey: 'ticker',
     sortDir: Sorting.Descending
   })
