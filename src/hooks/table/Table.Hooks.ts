@@ -4,17 +4,15 @@ import { TableOptions } from '@/types/table'
 
 export const useTable = <T>(
   list: T[],
-  {
-    sortKey,
-    sortDir = Sorting.Descending,
-    customSort
-  }: TableOptions<T>,
+  { sortKey, sortDir = Sorting.Descending, customSort }: TableOptions<T>
 ) => {
-  const { sortedList, ...sorting } = useSortedList(list, {
-    sortKey,
-    sortDir
-  },
-  customSort
+  const { sortedList, ...sorting } = useSortedList(
+    list,
+    {
+      sortKey,
+      sortDir
+    },
+    customSort
   )
 
   const stats = {

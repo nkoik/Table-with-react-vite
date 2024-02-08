@@ -1,14 +1,8 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
 export const TableBody = ({ children, ...rest }: { children: ReactNode }) => {
-    return (
-      <tbody
-        {...rest}
-      >
-        {children}
-      </tbody>
-    )
-  }
+  return <tbody {...rest}>{children}</tbody>
+}
 
 export const TableRow = ({ children, ...rest }: { children: ReactNode }) => {
   return (
