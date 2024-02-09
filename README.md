@@ -1,6 +1,6 @@
 # React Table
 
-This is a React application created with Vite + Tailwind + Vitest for testing.
+This is a React /Typescript application created with Vite + Tailwind + Vitest for testing.
 
 
 ## Prerequisites
