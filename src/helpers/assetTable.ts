@@ -18,7 +18,7 @@ export const rowClasses = (row: Data) => {
 export const cellClasses = (row: Data, key: keyof Data) =>
   key === 'price' ? (row.price >= 0 ? 'text-blue-600' : 'text-red-600') : null
 
-export const sortListByWeight = <T>(
+export const sortListByAsset = <T>(
   list: T[],
   weights: {
     sortKey: KeyOfTableList<T>

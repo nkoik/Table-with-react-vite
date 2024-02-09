@@ -5,16 +5,16 @@ import { useTable } from '@/hooks/table/Table.Hooks'
 import { assetClassTable, Sorting } from '@/enums/table'
 import Table from '@/components/table'
 import { sortList, camelCaseString } from '@/helpers/utils'
-import { rowClasses, cellClasses, sortListByWeight } from '@/helpers/assetTable'
+import { rowClasses, cellClasses, sortListByAsset } from '@/helpers/assetTable'
 
 function TablePage() {
-  const onSortAsset = (
+  const sortTable = (
     list: Data[],
     sortKey: keyof Data,
     sortDir: `${Sorting}`
   ) =>
     sortKey === 'assetClass'
-      ? sortListByWeight(list, assetClassTable.weight, sortDir)
+      ? sortListByAsset(list, assetClassTable.weight, sortDir)
       : sortList(list, sortKey, sortDir)
 
   const { data } = useGetRequest<Data[]>(Endpoint.Sample)
@@ -22,7 +22,7 @@ function TablePage() {
   const { list, sorting } = useTable(data, {
     sortKey: assetClassTable.defaultSortKey,
     sortDir: assetClassTable.defaultSortDir,
-    customSort: onSortAsset
+    customSort: sortTable
   })
 
   return (
