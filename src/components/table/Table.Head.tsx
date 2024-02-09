@@ -55,10 +55,11 @@ export const TableColumn: FC<
       key={id}
       align="left"
       className={'nowrap cursor-pointer ' + className}
+      onClick={() => onSort(id)}
       {...cellProps}
     >
       {sortable ? (
-        <span onClick={() => onSort(id)}>
+        <span>
           {children}
           {sortable && !!sortDir ? (
             <img

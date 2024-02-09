@@ -27,7 +27,7 @@ function TablePage() {
 
   return (
     <>
-      <Table className="shadow-lg bg-white border-collapse table-auto max-h-[800px] overflow-y-auto block">
+      <Table className="shadow-lg bg-white border-collapse max-h-[800px] overflow-y-auto block">
         <Table.Header
           {...sorting}
           className="bg-gray-50 border-b sticky top-0"
@@ -35,7 +35,7 @@ function TablePage() {
           {assetClassTable.columnIds.map((id) => (
             <Table.Column
               key={id}
-              className="px-6 py-3"
+              className="px-6 py-3 min-w-[200px] text-left font-bold uppercase text-xs text-gray-600 border-gray-100"
               id={id}
             >
               {camelCaseString(id)}
@@ -51,9 +51,10 @@ function TablePage() {
               {assetClassTable.columnIds.map((key) => (
                 <Table.Cell
                   key={key}
-                  className={['border px-8 py-4', cellClasses(row, key)].join(
-                    ' '
-                  )}
+                  className={[
+                    'border px-6 py-3 text-left text-sm',
+                    cellClasses(row, key)
+                  ].join(' ')}
                 >
                   {row[key]}
                 </Table.Cell>

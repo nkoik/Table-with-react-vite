@@ -1,30 +1,41 @@
-# React + TypeScript + Vite
+# React Table
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application created with Vite + Tailwind + Vitest for testing.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you begin, ensure you have met the following requirements:
 
-## Expanding the ESLint configuration
+- You have installed [Node.js and npm](https://nodejs.org/en/download/) - prefer nvm 18.18.0
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installing
 
-- Configure the top-level `parserOptions` property like this:
+To install, follow these steps:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname
-  }
-}
+1. Clone the repository:
+
+```bash
+git clone https://github.com/nkoik/table.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Install the project dependencies:
+
+```bash
+npm ci
+```
+
+### Using React Table
+
+1. Start the development server:
+
+```bash
+npm run dev
+```
+
+Open your web browser and visit http://localhost:8080
+
+2. Build the app
+
+```bash
+npm run build
+```

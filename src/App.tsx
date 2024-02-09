@@ -4,10 +4,8 @@ import TablePage from '@/pages/TablePage'
 function App() {
   return (
     <BodyWrapper>
-      <div className="mb-4">React Table</div>
-      <div className="p-8 border radius-2">
-        <TablePage />
-      </div>
+      <h1 className="mb-4">React Table</h1>
+      <TablePage />
     </BodyWrapper>
   )
 }
