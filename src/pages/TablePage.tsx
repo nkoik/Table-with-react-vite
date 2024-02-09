@@ -2,27 +2,28 @@ import type { Data } from '@/types/services'
 import { useGetRequest } from '@/hooks/useRequest'
 import { Endpoint } from '@/enums/services/endpoints'
 import { useTable } from '@/hooks/table/Table.Hooks'
-import { Sorting } from '@/enums/table'
+import { assetClassTable, Sorting } from '@/enums/table'
 import Table from '@/components/table'
-import { sortList } from '@/helpers/utils'
+import { sortList, camelCaseString } from '@/helpers/utils'
+import { rowClasses, cellClasses, sortListByWeight } from '@/helpers/assetTable'
 
 function TablePage() {
-  const { data } = useGetRequest<Data[]>(Endpoint.Sample)
-  const { list, sorting } = useTable(data, {
-    sortKey: 'ticker',
-    sortDir: Sorting.Ascending,
-    customSort: onSortAsset
-  })
-
-  function onSortAsset(
+  const onSortAsset = (
     list: Data[],
     sortKey: keyof Data,
     sortDir: `${Sorting}`
-  ) {
-    console.log('sortKey', sortKey)
-    console.log('sortDir', sortDir)
-    return sortKey === 'ticker' ? list : sortList(list, sortKey, sortDir)
-  }
+  ) =>
+    sortKey === 'assetClass'
+      ? sortListByWeight(list, assetClassTable.weight, sortDir)
+      : sortList(list, sortKey, sortDir)
+
+  const { data } = useGetRequest<Data[]>(Endpoint.Sample)
+
+  const { list, sorting } = useTable(data, {
+    sortKey: assetClassTable.defaultSortKey,
+    sortDir: assetClassTable.defaultSortDir,
+    customSort: onSortAsset
+  })
 
   return (
     <>
@@ -31,31 +32,32 @@ function TablePage() {
           {...sorting}
           className="bg-gray-50 border-b sticky top-0"
         >
-          <Table.Column
-            className="px-6 py-3"
-            id="ticker"
-          >
-            Ticker
-          </Table.Column>
-          <Table.Column
-            className="px-6 py-3"
-            id="price"
-          >
-            Price
-          </Table.Column>
-          <Table.Column
-            className="px-6 py-3"
-            id="assetClass"
-          >
-            Asset
-          </Table.Column>
+          {assetClassTable.columnIds.map((id) => (
+            <Table.Column
+              key={id}
+              className="px-6 py-3"
+              id={id}
+            >
+              {camelCaseString(id)}
+            </Table.Column>
+          ))}
         </Table.Header>
         <Table.Body className="h-[800px] overflow-y-auto">
-          {list.map(({ ticker, price, assetClass }) => (
-            <Table.Row key={ticker}>
-              <Table.Cell>{ticker}</Table.Cell>
-              <Table.Cell>{price}</Table.Cell>
-              <Table.Cell>{assetClass}</Table.Cell>
+          {list.map((row) => (
+            <Table.Row
+              key={row.ticker}
+              className={rowClasses(row)}
+            >
+              {assetClassTable.columnIds.map((key) => (
+                <Table.Cell
+                  key={key}
+                  className={['border px-8 py-4', cellClasses(row, key)].join(
+                    ' '
+                  )}
+                >
+                  {row[key]}
+                </Table.Cell>
+              ))}
             </Table.Row>
           ))}
         </Table.Body>

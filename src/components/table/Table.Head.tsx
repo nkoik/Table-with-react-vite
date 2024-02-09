@@ -2,19 +2,23 @@ import { Children, FC, PropsWithChildren, cloneElement } from 'react'
 import { Sorting } from '@/enums/table'
 import arrowDown from '@/assets/icons/arrow-down.svg'
 import arrowUp from '@/assets/icons/arrow-up.svg'
+import { KeyOfTableList } from '@/types/table'
+import { Data } from '@/types/services'
 
 const TableHeadDefaultProps = {
   sortKey: '',
   sortDir: Sorting.Descending,
-  onSort: null
+  onSort: (_: KeyOfTableList<Data>) => {},
+  className: ''
 }
 
 const TableColumnDefaultProps = {
   sortable: true,
   sortDir: Sorting.Descending,
-  onSort: null,
+  onSort: (_: KeyOfTableList<Data>) => {},
   className: '',
-  cellProps: {}
+  cellProps: {},
+  id: ''
 }
 
 export const TableHead: FC<PropsWithChildren<typeof TableHeadDefaultProps>> = ({
@@ -24,7 +28,7 @@ export const TableHead: FC<PropsWithChildren<typeof TableHeadDefaultProps>> = ({
   children,
   ...rest
 }) => {
-  const hasSorting: boolean = !!(sortDir && sortKey && onSort)
+  const hasSorting: boolean = !!(sortDir && sortKey)
   const headers = !hasSorting
     ? children
     : Children.map(children, (child) => {
@@ -46,8 +50,6 @@ TableHead.defaultProps = TableHeadDefaultProps
 export const TableColumn: FC<
   PropsWithChildren<typeof TableColumnDefaultProps>
 > = ({ id, children, cellProps, className, sortable, sortDir, onSort }) => {
-  const canSort = onSort && sortable
-
   return (
     <th
       key={id}
@@ -55,10 +57,10 @@ export const TableColumn: FC<
       className={'nowrap cursor-pointer ' + className}
       {...cellProps}
     >
-      {canSort ? (
+      {sortable ? (
         <span onClick={() => onSort(id)}>
           {children}
-          {canSort && !!sortDir ? (
+          {sortable && !!sortDir ? (
             <img
               className="inline px-1"
               src={sortDir === Sorting.Descending ? arrowDown : arrowUp}

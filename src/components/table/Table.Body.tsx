@@ -1,13 +1,18 @@
-import { ReactNode } from 'react'
+import { FC, PropsWithChildren } from 'react'
 
-export const TableBody = ({ children, ...rest }: { children: ReactNode }) => {
+export const TableBody: FC<PropsWithChildren & { className: string }> = ({
+  children,
+  ...rest
+}) => {
   return <tbody {...rest}>{children}</tbody>
 }
 
-export const TableRow = ({ children, ...rest }: { children: ReactNode }) => {
+export const TableRow: FC<PropsWithChildren & { className: string }> = ({
+  children,
+  ...rest
+}) => {
   return (
     <tr
-      className="hover:bg-gray-50"
       tabIndex={-1}
       {...rest}
     >
@@ -16,10 +21,12 @@ export const TableRow = ({ children, ...rest }: { children: ReactNode }) => {
   )
 }
 
-export const TableCell = ({ children, ...rest }: { children: ReactNode }) => {
+export const TableCell: FC<PropsWithChildren & { className: string }> = ({
+  children,
+  ...rest
+}) => {
   return (
     <td
-      className="border px-8 py-4"
       align="left"
       {...rest}
     >

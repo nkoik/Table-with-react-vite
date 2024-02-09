@@ -19,3 +19,7 @@ export const sortList = <T>(
     return comparison
   })
 }
+
+export const camelCaseString = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
