@@ -21,7 +21,6 @@ vi.mock('@/services', () => ({
 
 describe('useGetRequest', () => {
   it('should return data when the request is successful', async () => {
-
     const { result } = renderHook(() => useGetRequest('/success'))
 
     await waitFor(() => {
@@ -40,7 +39,6 @@ describe('useGetRequest', () => {
   })
 
   it('should return an error when the request fails', async () => {
-
     const { result } = renderHook(() => useGetRequest('/test-endpoint'))
     await waitFor(() => {
       expect(result.current.isLoaded).toBe(true)

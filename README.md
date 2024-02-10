@@ -34,7 +34,13 @@ npm run dev
 
 Open your web browser and visit http://localhost:8080
 
-2. Build the app
+2. Build the app for local env
+
+```bash
+npm run local_build
+```
+
+3. Build the app with type check
 
 ```bash
 npm run build
