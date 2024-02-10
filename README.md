@@ -2,7 +2,6 @@
 
 This is a React /Typescript application created with Vite + Tailwind + Vitest for testing.
 
-
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
@@ -40,7 +39,6 @@ Open your web browser and visit http://localhost:8080
 ```bash
 npm run build
 ```
-
 
 ## Contribution
 

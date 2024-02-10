@@ -12,10 +12,11 @@ export const useGetRequest = <T>(endpoint: string) => {
     const fetchData = async () => {
       try {
         const response = await http.service().get<T>(endpoint)
-        setIsLoaded(true)
         setData(response)
       } catch (error) {
         setError(error)
+      } finally {
+        setIsLoaded(true)
       }
     }
     fetchData()
