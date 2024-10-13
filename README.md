@@ -1,4 +1,4 @@
-# React Table
+# React Table_test2
 
 This is a React /Typescript application created with Vite + Tailwind + Vitest for testing.
 
